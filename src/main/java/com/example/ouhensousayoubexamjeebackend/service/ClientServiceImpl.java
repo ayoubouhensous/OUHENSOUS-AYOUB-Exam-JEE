@@ -54,4 +54,13 @@ public class ClientServiceImpl implements ClientService {
                 .map(ClientMapper::toDTO)
                 .collect(Collectors.toList());
     }
+
+    @Override
+    public List<ClientDTO> getClientsByName(String name) {
+        return clientRepository.findByNomContains(name)
+                .stream()
+                .map(ClientMapper::toDTO)
+                .collect(Collectors.toList());
+
+    }
 }

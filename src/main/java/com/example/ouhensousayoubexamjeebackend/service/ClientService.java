@@ -11,4 +11,5 @@ public interface ClientService {
     void deleteClient(Long id);
     ClientDTO getClientById(Long id);
     List<ClientDTO> getAllClients();
+    List<ClientDTO> getClientsByName(String name);
 }

@@ -11,6 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/clients")
+@CrossOrigin("*")
 public class ClientController {
 
     private ClientService clientService;
@@ -47,5 +48,10 @@ public class ClientController {
     public ResponseEntity<Void> deleteClient(@PathVariable Long id) {
         clientService.deleteClient(id);
         return ResponseEntity.noContent().build();
+    }
+    @GetMapping("/search")
+    public ResponseEntity<List<ClientDTO>> searchClient(@RequestParam(name ="search" , defaultValue = "") String search) {
+        List<ClientDTO> clients = clientService.getClientsByName(search);
+        return ResponseEntity.ok(clients);
     }
 }
